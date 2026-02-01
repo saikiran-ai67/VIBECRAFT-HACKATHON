@@ -1,0 +1,20 @@
+1. System Architecture
+This project follows a classic Client-Server (MVC) architecture. Since you are likely using the "In-Memory" version for the hackathon (to avoid database errors during the demo), the architecture looks like this:
+
+A. The Frontend (Client Layer)
+
+Technology: HTML5, CSS3 (Glassmorphism Design), Vanilla JavaScript.
+
+Role: Handles user interaction. It captures the student's issue and sends it to the server using the fetch() API. It also continuously asks the server for updates to the issue status.
+
+B. The Backend (Server Layer)
+
+Technology: Node.js with Express.js framework.
+
+Role: This is the "Brain." It receives data from the frontend, validates it (checks if fields are empty), and routes it. It also handles the Admin logic (checking if the PIN is "0123").
+
+C. The Data Layer (Storage)
+
+Technology: RAM (In-Memory Array) or MongoDB.
+
+Role: Stores the tickets. In our hackathon version, this lives inside the running Node.js process. When the Admin asks for "All Issues," the Server reads from this layer and sends the list back.
